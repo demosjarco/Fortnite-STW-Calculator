@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+@common: #7b7b7b;
+@uncommon: #3a7913;
+@rare: #1258a2;
+@epic: #8226bd;
+@legendary: #ff7605;
+
+h1 {
+     
+}
+
+main {
+     display: flex;
+     
+     div.weapon {
+          margin: 5px;
+          color: white;
+          
+          &.common {
+               background-color: @common;
+          }
+          &.uncommon {
+               background-color: @uncommon;
+          }
+          &.rare {
+               background-color: @rare;
+          }
+          &.epic {
+               background-color: @epic;
+          }
+          &.legendary {
+               background-color: @legendary;
+          }
+          
+          header {
+               display: block;
+               height: 30px;
+               
+               select {
+                    display: inline-block;
+               }
+               
+               div.delete {
+                    display: inline-block;
+                    float: right;
+                    
+                    border-left: 1px solid white;
+                    border-bottom: 1px solid white;
+                    
+                    background-color: #b00020;
+                    color: white;
+               }
+          }
+          
+          div.variations {
+               display: flex;
+               
+               div.variation {
+                    margin: 10px 5px;
+                    
+                    &:first-child {
+                         margin-left: 10px;
+                    }
+                    
+                    &:last-child {
+                         margin-right: 10px;
+                    }
+                    
+                    border: 1px solid rgba(255, 255, 255, 2/3);
+                    
+                    div.perks {
+                         display: flex;
+                         flex-direction: column;
+                         
+                         div.perkRow {
+                              border-bottom: 1px solid white;
+                              
+                              &:first-child {
+                                   border-top: 1ps solid white;
+                              }
+                              
+                              &:last-child {
+                                   border-bottom: none;
+                              }
+                              
+                              span.perkName {
+                                   display: block;
+                              }
+                         }
+                    }
+               }
+          }
+     }
+}

@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+}
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+}
+.material-icons.md-24 {
+  font-size: 24px;
+}
+.material-icons.md-36 {
+  font-size: 36px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+main {
+  display: flex;
+}
+main div.weapon {
+  margin: 5px;
+  color: white;
+}
+main div.weapon.common {
+  background-color: #7b7b7b;
+}
+main div.weapon.uncommon {
+  background-color: #3a7913;
+}
+main div.weapon.rare {
+  background-color: #1258a2;
+}
+main div.weapon.epic {
+  background-color: #8226bd;
+}
+main div.weapon.legendary {
+  background-color: #ff7605;
+}
+main div.weapon header {
+  display: block;
+  height: 30px;
+}
+main div.weapon header select {
+  display: inline-block;
+}
+main div.weapon header div.delete {
+  display: inline-block;
+  float: right;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  background-color: #b00020;
+  color: white;
+}
+main div.weapon div.variations {
+  display: flex;
+}
+main div.weapon div.variations div.variation {
+  margin: 10px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.66666667);
+}
+main div.weapon div.variations div.variation:first-child {
+  margin-left: 10px;
+}
+main div.weapon div.variations div.variation:last-child {
+  margin-right: 10px;
+}
+main div.weapon div.variations div.variation div.perks {
+  display: flex;
+  flex-direction: column;
+}
+main div.weapon div.variations div.variation div.perks div.perkRow {
+  border-bottom: 1px solid white;
+}
+main div.weapon div.variations div.variation div.perks div.perkRow:first-child {
+  border-top: 1ps solid white;
+}
+main div.weapon div.variations div.variation div.perks div.perkRow:last-child {
+  border-bottom: none;
+}
+main div.weapon div.variations div.variation div.perks div.perkRow span.perkName {
+  display: block;
+}
