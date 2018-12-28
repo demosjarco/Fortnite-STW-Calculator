@@ -45,19 +45,34 @@ main div.weapon {
   color: white;
 }
 main div.weapon.common {
-  background-color: #7b7b7b;
+  background-color: #7a7a7a;
+}
+main div.weapon.common div.results {
+  background-color: #c7c7c7;
 }
 main div.weapon.uncommon {
-  background-color: #3a7913;
+  background-color: #397713;
+}
+main div.weapon.uncommon div.results {
+  background-color: #7fe141;
 }
 main div.weapon.rare {
-  background-color: #1258a2;
+  background-color: #1257a1;
+}
+main div.weapon.rare div.results {
+  background-color: #5ea3ed;
 }
 main div.weapon.epic {
-  background-color: #8226bd;
+  background-color: #8526c0;
+}
+main div.weapon.epic div.results {
+  background-color: #c995ea;
 }
 main div.weapon.legendary {
   background-color: #ff7605;
+}
+main div.weapon.legendary div.results {
+  background-color: #ffca9e;
 }
 main div.weapon header {
   display: block;

@@ -9,11 +9,18 @@
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
 
-@common: #7b7b7b;
-@uncommon: #3a7913;
-@rare: #1258a2;
-@epic: #8226bd;
-@legendary: #ff7605;
+@lightnessIncrease: 30;
+
+@common: hsl(0, 0%, 48%);
+@commonLight: hsl(hue(@common), saturation(@common), lightness(@common) + @lightnessIncrease);
+@uncommon: hsl(97, 73%, 27%);
+@uncommonLight: hsl(hue(@uncommon), saturation(@uncommon), lightness(@uncommon) + @lightnessIncrease);
+@rare: hsl(211, 80%, 35%);
+@rareLight: hsl(hue(@rare), saturation(@rare), lightness(@rare) + @lightnessIncrease);
+@epic: hsl(277, 67%, 45%);
+@epicLight: hsl(hue(@epic), saturation(@epic), lightness(@epic) + @lightnessIncrease);
+@legendary: hsl(27, 100%, 51%);
+@legendaryLight: hsl(hue(@legendary), saturation(@legendary), lightness(@legendary) + @lightnessIncrease);
 
 h1 {
      
@@ -28,18 +35,38 @@ main {
           
           &.common {
                background-color: @common;
+               
+               div.results {
+                    background-color: @commonLight;
+               }
           }
           &.uncommon {
                background-color: @uncommon;
+               
+               div.results {
+                    background-color: @uncommonLight;
+               }
           }
           &.rare {
                background-color: @rare;
+               
+               div.results {
+                    background-color: @rareLight;
+               }
           }
           &.epic {
                background-color: @epic;
+               
+               div.results {
+                    background-color: @epicLight;
+               }
           }
           &.legendary {
                background-color: @legendary;
+               
+               div.results {
+                    background-color: @legendaryLight;
+               }
           }
           
           header {
