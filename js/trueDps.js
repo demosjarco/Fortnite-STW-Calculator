@@ -80,3 +80,6 @@ const perks = {
 		}
 	}
 };
+
+const googleSheetsApiKey = 'AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI';
+// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
