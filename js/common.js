@@ -9,3 +9,10 @@ function updateParameter(key, value) {
 	
 	window.history.replaceState({}, '', `${location.pathname}?${params}`);
 }
+
+function deleteParameter(key) {
+     const params = new URLSearchParams(location.search);
+     params.delete(key);
+     
+     window.history.replaceState({}, '', `${location.pathname}?${params}`);
+}
