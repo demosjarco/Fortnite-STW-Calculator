@@ -1,3 +1,8 @@
+function getAllParameters() {
+     const params = new URLSearchParams(location.search);
+     return Array.from(params);
+}
+
 function getParameter(key) {
 	const params = new URLSearchParams(location.search);
 	return params.get(key);
