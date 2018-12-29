@@ -84,8 +84,6 @@ main div.weapon header select {
 main div.weapon header div.delete {
   display: inline-block;
   float: right;
-  border-left: 1px solid white;
-  border-bottom: 1px solid white;
   height: 30px;
   width: 30px;
   padding: 3px;
