@@ -90,10 +90,13 @@ main {
           }
           
           div.variations {
-               display: flex;
+               display: inline-flex;
+               float: left;
                
-               div.variation {
+               > div.variation {
                     margin: 10px 5px;
+                    width: 170px;
+                    height: 285px;
                     
                     &:first-child {
                          margin-left: 10px;

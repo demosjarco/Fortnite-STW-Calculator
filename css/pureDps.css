@@ -91,31 +91,34 @@ main div.weapon header div.delete {
   color: white;
 }
 main div.weapon div.variations {
-  display: flex;
+  display: inline-flex;
+  float: left;
 }
-main div.weapon div.variations div.variation {
+main div.weapon div.variations > div.variation {
   margin: 10px 5px;
+  width: 170px;
+  height: 285px;
 }
-main div.weapon div.variations div.variation:first-child {
+main div.weapon div.variations > div.variation:first-child {
   margin-left: 10px;
 }
-main div.weapon div.variations div.variation:last-child {
+main div.weapon div.variations > div.variation:last-child {
   margin-right: 10px;
 }
-main div.weapon div.variations div.variation div.perks {
+main div.weapon div.variations > div.variation div.perks {
   display: flex;
   flex-direction: column;
 }
-main div.weapon div.variations div.variation div.perks div.perkRow {
+main div.weapon div.variations > div.variation div.perks div.perkRow {
   border-bottom: 1px solid white;
 }
-main div.weapon div.variations div.variation div.perks div.perkRow:first-child {
+main div.weapon div.variations > div.variation div.perks div.perkRow:first-child {
   border-top: 1px solid white;
 }
-main div.weapon div.variations div.variation div.perks div.perkRow:last-child {
+main div.weapon div.variations > div.variation div.perks div.perkRow:last-child {
   border-bottom: none;
 }
-main div.weapon div.variations div.variation div.perks div.perkRow span.perkName {
+main div.weapon div.variations > div.variation div.perks div.perkRow span.perkName {
   display: block;
 }
 main div.weapon div.results {
