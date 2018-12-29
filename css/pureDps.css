@@ -40,6 +40,18 @@
 main {
   display: flex;
 }
+main div#newWeapon {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.33333333);
+  cursor: pointer;
+}
+main div#newWeapon i {
+  position: absolute;
+  top: 126px;
+  left: 76px;
+}
 main div.weapon {
   margin: 5px;
   color: white;
