@@ -163,11 +163,12 @@ main div.weapon div.results > div.variation div.stats div.statRow:first-child {
 main div.weapon div.results > div.variation div.stats div.statRow:last-child {
   border-bottom: none;
 }
+main div.weapon div.results > div.variation div.stats div.statRow span.variation {
+  font-weight: bold;
+}
 main div.weapon div.results > div.variation div.stats div.statRow span.variation.positive {
   color: green;
-  font-weight: bold;
 }
 main div.weapon div.results > div.variation div.stats div.statRow span.variation.negative {
   color: red;
-  font-weight: bold;
 }
