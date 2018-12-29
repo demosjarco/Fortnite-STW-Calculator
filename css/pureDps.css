@@ -118,3 +118,38 @@ main div.weapon div.variations div.variation div.perks div.perkRow:last-child {
 main div.weapon div.variations div.variation div.perks div.perkRow span.perkName {
   display: block;
 }
+main div.weapon div.results {
+  display: inline-flex;
+  float: right;
+  color: black;
+}
+main div.weapon div.results > div.variation {
+  margin: 10px 5px;
+}
+main div.weapon div.results > div.variation:first-child {
+  margin-left: 10px;
+}
+main div.weapon div.results > div.variation:last-child {
+  margin-right: 10px;
+}
+main div.weapon div.results > div.variation div.stats {
+  display: flex;
+  flex-direction: column;
+}
+main div.weapon div.results > div.variation div.stats div.statRow {
+  border-bottom: 1px solid white;
+}
+main div.weapon div.results > div.variation div.stats div.statRow:first-child {
+  border-top: 1px solid white;
+}
+main div.weapon div.results > div.variation div.stats div.statRow:last-child {
+  border-bottom: none;
+}
+main div.weapon div.results > div.variation div.stats div.statRow span.variation.positive {
+  color: green;
+  font-weight: bold;
+}
+main div.weapon div.results > div.variation div.stats div.statRow span.variation.negative {
+  color: red;
+  font-weight: bold;
+}
