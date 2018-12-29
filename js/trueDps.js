@@ -130,6 +130,7 @@ function addPerk(weapon, variation) {
      }
      counter[weapon][variation] += 1;
      $('.newPerk.w' + weapon + '.v' + variation).before('<div class="perkRow w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '"><select class="perkType w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '" onchange="perkTypeChanged(' + weapon + ', ' + variation + ', ' + counter[weapon][variation] + ')"> ' + perkTypeOptionString + ' </select><select class="perkValue w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '" onchange="perkValueChanged(' + weapon + ', ' + variation + ', ' + counter[weapon][variation] + ')">' + perkValueOptionString + '</select></div>');
+     updateParameter('w' + weapon + '.v' + variation + '.p' + counter[weapon][variation], $('.perkType.w' + weapon + '.v' + variation + '.p' + counter[weapon][variation]).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + counter[weapon][variation]).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + counter[weapon][variation]).val()]);
 }
 
 function addVariation() {
@@ -143,9 +144,9 @@ function perkTypeChanged(weapon, variation, perk) {
      for(y in perks.damage.values) {
           $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).append('<option value="' + y + '">' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[y] + '</option>');
      }
-     console.log(perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
+     updateParameter('w' + weapon + '.v' + variation + '.p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
 }
 
 function perkValueChanged(weapon, variation, perk) {
-     console.log(perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
+     updateParameter('w' + weapon + '.v' + variation + '.p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
 }
