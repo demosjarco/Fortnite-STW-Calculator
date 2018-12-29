@@ -95,7 +95,6 @@ main div.weapon div.variations {
 }
 main div.weapon div.variations div.variation {
   margin: 10px 5px;
-  border: 1px solid rgba(255, 255, 255, 0.66666667);
 }
 main div.weapon div.variations div.variation:first-child {
   margin-left: 10px;
