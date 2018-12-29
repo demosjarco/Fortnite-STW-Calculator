@@ -141,7 +141,6 @@ function addVariation() {
 }
 
 function perkTypeChanged(weapon, variation, perk) {
-     console.log($('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val());
      $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).empty();
      var y;
      for(y in perks.damage.values) {
