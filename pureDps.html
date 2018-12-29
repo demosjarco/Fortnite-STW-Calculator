@@ -16,42 +16,41 @@
      <h1>Pure DPS Calculator</h1>
 </header>
 <main>
-     <div class="weapon epic">
+     <div class="weapon epic w1">
           <header>
                <select name="" id="">
                     <option value="Siegebreaker" selected="selected">Seigebreaker</option>
                </select>
                <div class="delete" onClick=""><i class="material-icons md-24">delete_sweep</i></div>
           </header>
-          <div class="variations">
-               <div class="variation">
+          <div class="variations w1">
+               <div class="variation w1 v1">
                     <header>
                          <span>Variation 1</span>
                          <div class="delete" onClick=""><i class="material-icons md-24">delete</i></div>
                     </header>
-                    <div class="perks">
-                         <div class="perkRow">
-                              <span class="perkName">Perk</span>
-                              <input type="range" /><span class="value">50%</span>
+                    <div class="perks w1 v1">
+                         <div class="newPerk w1 v1" onClick="addPerk(1, 1)">
+                              <i class="material-icons md-24">add_circle_outline</i>
                          </div>
                     </div>
                </div>
           </div>
           <div class="results">
-               <div class="variation">
+               <div class="variation w1 v1">
                     <header><span>Variation 1</span></header>
                     <div class="stats">
-                         <div class="statRow">
-                              <span class="value">45.2364</span> <span class="statName">Dmg/shot</span> <span class="variation negative">(-21.19%)</span>
+                         <div class="statRow w1 v1 s0">
+                              <span class="value">45.2364</span> <span class="statName">Dmg/shot</span> <span class="variation">(-21.19%)</span>
                          </div>
-                         <div class="statRow">
-                              <span class="value">45.2364</span> <span class="statName">Dmg/shot</span> <span class="variation negative">(-21.19%)</span>
+                         <div class="statRow w1 v1 s1">
+                              <span class="value">45.2364</span> <span class="statName">Dmg/sec</span> <span class="variation">(-21.19%)</span>
                          </div>
-                         <div class="statRow">
-                              <span class="value">45.2364</span> <span class="statName">Dmg/shot</span> <span class="variation negative">(-21.19%)</span>
+                         <div class="statRow w1 v1 s2">
+                              <span class="value">45.2364</span> <span class="statName">Durability</span> <span class="variation">(-21.19%)</span>
                          </div>
-                         <div class="statRow">
-                              <span class="value">45.2364</span> <span class="statName">Dmg/shot</span> <span class="variation negative">(-21.19%)</span>
+                         <div class="statRow w1 v1 s3">
+                              <span class="value">45.2364</span> <span class="statName">Effective Dmg</span> <span class="variation">(-21.19%)</span>
                          </div>
                     </div>
                </div>

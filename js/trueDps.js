@@ -106,3 +106,46 @@ $.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFq
           $("main").append('<p id="error">Error loading from Whitesushi spreadsheet</p>');
      }
 });
+
+var counter = {
+     1: {
+          1: 0
+     }
+};
+
+function addWeapon() {
+     $("#newWeapon").before('');
+}
+
+function addPerk(weapon, variation) {
+     var x;
+     var perkTypeOptionString = '';
+     for(x in perks) {
+          perkTypeOptionString += '<option value="' + x + '">' + perks[x].name + '</option>';
+     }
+     var y;
+     var perkValueOptionString = '';
+     for(y in perks.damage.values) {
+          perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
+     }
+     counter[weapon][variation] += 1;
+     $('.newPerk.w' + weapon + '.v' + variation).before('<div class="perkRow w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '"><select class="perkType w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '" onchange="perkTypeChanged(' + weapon + ', ' + variation + ', ' + counter[weapon][variation] + ')"> ' + perkTypeOptionString + ' </select><select class="perkValue w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '" onchange="perkValueChanged(' + weapon + ', ' + variation + ', ' + counter[weapon][variation] + ')">' + perkValueOptionString + '</select></div>');
+}
+
+function addVariation() {
+     $("").append();
+}
+
+function perkTypeChanged(weapon, variation, perk) {
+     console.log($('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val());
+     $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).empty();
+     var y;
+     for(y in perks.damage.values) {
+          $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).append('<option value="' + y + '">' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[y] + '</option>');
+     }
+     console.log(perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
+}
+
+function perkValueChanged(weapon, variation, perk) {
+     console.log(perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
+}
