@@ -113,7 +113,7 @@ main div.weapon div.variations div.variation div.perks div.perkRow {
   border-bottom: 1px solid white;
 }
 main div.weapon div.variations div.variation div.perks div.perkRow:first-child {
-  border-top: 1ps solid white;
+  border-top: 1px solid white;
 }
 main div.weapon div.variations div.variation div.perks div.perkRow:last-child {
   border-bottom: none;
