@@ -147,8 +147,23 @@ function perkTypeChanged(weapon, variation, perk) {
           $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).append('<option value="' + y + '">' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[y] + '</option>');
      }
      updateParameter('w' + weapon + '.v' + variation + '.p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
+     recalculate(weapon, variation);
 }
 
 function perkValueChanged(weapon, variation, perk) {
      updateParameter('w' + weapon + '.v' + variation + '.p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
+     recalculate(weapon, variation);
+}
+
+function recalculate(weapon, variation, headshot = 50, level = 130, crystal = true, offense = 1000) {
+     $('.perkType.w' + weapon + '.v' + variation).each(function(index, element) {
+          console.log($('.perkType.w' + weapon + '.v' + variation + '.p' + (index + 1)).val() + ' is ' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + (index + 1)).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + (index + 1)).val()]);
+     });
+     weaponInfo.forEach(function(weapon) {
+          if (weapon.name == $('.weaponPick.w' + weapon).val()) {
+               var s31 = (weapon.dmg * Math.max(1+(Math.ceil(level/10)-1)*0.2, 1) * (1+(Math.floor(Math.max(130, 1))-1) * 0.05) * (1+ crystal ? 0.2 : 0) * (1+offense/100) * 100);
+               $('.statRow.dmgShot.w' + weapon + '.v' + variation).text(s31*(1+));
+          }
+     });
+     // =S31*(1+S55) * (1+MIN((S32 + ROUND((3*S56/100)/(4*S56/100+2),2)),1) * (S33+S57) + ((1+S37)*(1+S61)-1)*C35) * (1+(S47*S48)) * C36
 }
