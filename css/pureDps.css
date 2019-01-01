@@ -101,6 +101,7 @@ main div.weapon header div.delete {
   padding: 3px;
   background-color: #b00000;
   color: white;
+  cursor: pointer;
 }
 main div.weapon div.variations {
   display: inline-flex;
