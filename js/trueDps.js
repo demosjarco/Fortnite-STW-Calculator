@@ -117,53 +117,30 @@ var counter = {
 };
 
 function addWeapon() {
-     $("#newWeapon").before('');
-}
-
-function addPerk(weapon, variation) {
-     var x;
-     var perkTypeOptionString = '';
-     for(x in perks) {
-          perkTypeOptionString += '<option value="' + x + '">' + perks[x].name + '</option>';
-     }
-     var y;
-     var perkValueOptionString = '';
-     for(y in perks.damage.values) {
-          perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
-     }
-     counter[weapon][variation] += 1;
-     $('.newPerk.w' + weapon + '.v' + variation).before('<div class="perkRow w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '"><select class="perkType w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '" onchange="perkTypeChanged(' + weapon + ', ' + variation + ', ' + counter[weapon][variation] + ')"> ' + perkTypeOptionString + ' </select><select class="perkValue w' + weapon + ' v' + variation + ' p' + counter[weapon][variation] + '" onchange="perkValueChanged(' + weapon + ', ' + variation + ', ' + counter[weapon][variation] + ')">' + perkValueOptionString + '</select></div>');
-     updateParameter('w' + weapon + '.v' + variation + '.p' + counter[weapon][variation], $('.perkType.w' + weapon + '.v' + variation + '.p' + counter[weapon][variation]).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + counter[weapon][variation]).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + counter[weapon][variation]).val()]);
-}
-
-function addVariation() {
-     $("").append();
-}
-
-function perkTypeChanged(weapon, variation, perk) {
-     $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).empty();
-     var y;
-     for(y in perks.damage.values) {
-          $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).append('<option value="' + y + '">' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[y] + '</option>');
-     }
-     updateParameter('w' + weapon + '.v' + variation + '.p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
-     recalculate(weapon, variation);
-}
-
-function perkValueChanged(weapon, variation, perk) {
-     updateParameter('w' + weapon + '.v' + variation + '.p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val()]);
-     recalculate(weapon, variation);
-}
-
-function recalculate(weapon, variation, headshot = 50, level = 130, crystal = true, offense = 1000) {
-     $('.perkType.w' + weapon + '.v' + variation).each(function(index, element) {
-          console.log($('.perkType.w' + weapon + '.v' + variation + '.p' + (index + 1)).val() + ' is ' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + (index + 1)).val()].values[$('.perkValue.w' + weapon + '.v' + variation + '.p' + (index + 1)).val()]);
-     });
+     var biggestLastWeapon = 0;
+     if (Object.keys(counter).length > 0)
+          biggestLastWeapon = Object.keys(counter)[Object.keys(counter).length - 1];
+     counter[biggestLastWeapon + 1] = {};
+     
+     var weaponOptionString = '';
      weaponInfo.forEach(function(weapon) {
-          if (weapon.name == $('.weaponPick.w' + weapon).val()) {
-               var s31 = (weapon.dmg * Math.max(1+(Math.ceil(level/10)-1)*0.2, 1) * (1+(Math.floor(Math.max(130, 1))-1) * 0.05) * (1+ crystal ? 0.2 : 0) * (1+offense/100) * 100);
-               $('.statRow.dmgShot.w' + weapon + '.v' + variation).text(s31*(1+));
+          weaponOptionString += '<option value="' + weapon.name + '">' + weapon.name + '</option>';
+     });
+     
+     $("#newWeapon").before('<div class="weapon w' + (biggestLastWeapon + 1) + '"><header><select class="weaponPick w' + (biggestLastWeapon + 1) + '" onchange="weaponChange(' + (biggestLastWeapon + 1) + ')">' + weaponOptionString + '</select><div class="delete" onClick=""><i class="material-icons md-24">delete_sweep</i></div></header><div>');
+}
+
+function weaponChange(weapon) {
+     // Remove old rarity classes
+     $('.weaponPick.w' + weapon).removeClass('common');
+     $('.weaponPick.w' + weapon).removeClass('uncommon');
+     $('.weaponPick.w' + weapon).removeClass('rare');
+     $('.weaponPick.w' + weapon).removeClass('epic');
+     $('.weaponPick.w' + weapon).removeClass('legendary');
+     
+     weaponInfo.forEach(function(weaponInfo) {
+          if (weaponInfo.name == $('.weaponPick.w' + weapon).val()) {
+               $('.weapon.w' + weapon).addClass(weaponInfo.rarity);
           }
      });
-     // =S31*(1+S55) * (1+MIN((S32 + ROUND((3*S56/100)/(4*S56/100+2),2)),1) * (S33+S57) + ((1+S37)*(1+S61)-1)*C35) * (1+(S47*S48)) * C36
 }
