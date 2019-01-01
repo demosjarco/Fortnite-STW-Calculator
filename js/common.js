@@ -15,9 +15,17 @@ function updateParameter(key, value) {
 	window.history.replaceState({}, '', `${location.pathname}?${params}`);
 }
 
-function deleteParameter(key) {
+function deleteParameter(key, checkAll = false) {
      const params = new URLSearchParams(location.search);
-     params.delete(key);
+     if (checkAll) {
+          getAllParameters().forEach(function(parameters) {
+               const key1 = parameters[0];
+               if (key1.includes(key))
+                    params.delete(key1);
+          });
+     } else {
+          params.delete(key1);
+     }
      
      window.history.replaceState({}, '', `${location.pathname}?${params}`);
 }
