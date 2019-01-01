@@ -113,10 +113,10 @@ $.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFq
 var counter = {};
 
 function loadExisting() {
-     const weaponKey = /^w{1}\d{1}$/;
-     const weaponNumber = /(?!w){1}\d{1}/;
-     const variationKey = /^w{1}\d{1}v{1}\d{1}$/;
-     const perkKey = /^w{1}\d{1}v{1}\d{1}p{1}\d{1}$/;
+     const weaponKey = /^w{1}\d+$/;
+     const weaponNumber = /(?!w){1}\d+/;
+     const variationKey = /^w{1}\d+v{1}\d+$/;
+     const perkKey = /^w{1}\d+v{1}\d+p{1}\d+$/;
      getAllParameters().forEach(function(parameter) {
           if (weaponKey.test(parameter[0]))
                addWeapon(weaponNumber.exec(parameter[0]), parameter[1]);
