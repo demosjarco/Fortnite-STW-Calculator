@@ -186,9 +186,6 @@ function weaponRemove(weapon) {
 function variationAdd(weapon) {
      
 }
-function variationChange(weapon, variation) {
-     
-}
 function variationRemove(weapon, variation) {
      
 }
