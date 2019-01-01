@@ -150,7 +150,6 @@ function addWeapon(weaponNumber, weaponName) {
      updateParameter('w' + newWeapon, $('.weaponPick.w' + newWeapon).val());
      weaponChange(newWeapon);
 }
-
 function weaponChange(weapon) {
      // Remove old rarity classes
      $('.weaponPick.w' + weapon).removeClass('common');
@@ -167,7 +166,6 @@ function weaponChange(weapon) {
      
      updateParameter('w' + weapon, $('.weaponPick.w' + weapon).val());
 }
-
 function weaponRemove(weapon) {
      delete counter[weapon];
      deleteParameter('w' + weapon, true);
