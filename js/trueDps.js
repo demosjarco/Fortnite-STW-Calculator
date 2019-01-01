@@ -101,7 +101,7 @@ $.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFq
                });
           }
           $("#loading").remove();
-          $("main").append('<div id="newWeapon" onClick="addWeapon()"><i class="material-icons md-48">add_circle_outline</i></div>');
+          $("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
           
           // Load from url
           loadExisting();
@@ -119,11 +119,11 @@ function loadExisting() {
      const perkKey = /^w{1}\d+v{1}\d+p{1}\d+$/;
      getAllParameters().forEach(function(parameter) {
           if (weaponKey.test(parameter[0]))
-               addWeapon(weaponNumber.exec(parameter[0]), parameter[1]);
+               weaponAdd(weaponNumber.exec(parameter[0]), parameter[1]);
      });
 }
 
-function addWeapon(weaponNumber, weaponName) {
+function weaponAdd(weaponNumber, weaponName) {
      var newWeapon = 1;
      
      if (weaponNumber == undefined) {
