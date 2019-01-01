@@ -110,11 +110,7 @@ $.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFq
      }
 });
 
-var counter = {
-     1: {
-          1: 0
-     }
-};
+var counter = {};
 
 function addWeapon() {
      var biggestLastWeapon = 0;
