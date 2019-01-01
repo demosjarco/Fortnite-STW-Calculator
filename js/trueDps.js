@@ -134,20 +134,31 @@ function weaponAdd(weaponNumber, weaponName) {
      } else {
           newWeapon = weaponNumber;
      }
-     counter[newWeapon] = {};
+     counter[newWeapon] = {1: {1: null}};
      
      var weaponOptionString = '';
      weaponInfo.forEach(function(weapon) {
           weaponOptionString += '<option value="' + weapon.name + '">' + weapon.name + '</option>';
      });
+     var x;
+     var perkTypeOptionString = '';
+     for(x in perks) {
+          perkTypeOptionString += '<option value="' + x + '">' + perks[x].name + '</option>';
+     }
+     var y;
+     var perkValueOptionString = '';
+     for(y in perks.damage.values) {
+          perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
+     }
      
-     $("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><select class="weaponPick w' + newWeapon + '" onchange="weaponChange(' + newWeapon + ')">' + weaponOptionString + '</select><div class="delete" onClick="weaponRemove(' + newWeapon + ')"><i class="material-icons md-24">delete_sweep</i></div></header><div class="results"></div><div>');
+     $("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><select class="weaponPick w' + newWeapon + '" onchange="weaponChange(' + newWeapon + ')">' + weaponOptionString + '</select><div class="delete" onClick="weaponRemove(' + newWeapon + ')"><i class="material-icons md-24">delete_sweep</i></div></header><div class="variations w' + newWeapon + '"><div class="variation w' + newWeapon + ' v1"><header><span>Variation 1</span><div class="delete" onClick="variationRemove(' + newWeapon + ', 1)"><i class="material-icons md-24">delete</i></div></header><div class="perks w' + newWeapon + ' v1"><div class="perkRow w' + newWeapon + ' v1 p1"><select class="perkType w' + newWeapon + ' v1 p1" onChange="perkTypeChange(' + newWeapon + ', 1, 1)">' + perkTypeOptionString + '</select><select class="perkValue w' + newWeapon + ' v1 p1" onChange="perkValueChange(' + newWeapon + ', 1, 1)">' + perkValueOptionString + '</select></div><div class="newPerk w' + newWeapon + ' v1" onClick="perkAdd(' + newWeapon + ', 1)"><i class="material-icons md-24">add_circle_outline</i></div></div></div></div><div class="results"></div><div>');
      
      if (weaponNumber != undefined && weaponName != undefined) {
           $('.weaponPick.w' + weaponNumber).val(weaponName);
      }
      
      updateParameter('w' + newWeapon, $('.weaponPick.w' + newWeapon).val());
+     updateParameter('w' + newWeapon + 'v1p1', $('.perkType.w' + newWeapon + '.v1.p1').val() + '.' + $('.perkValue.w' + newWeapon + '.v1.p1').val());
      weaponChange(newWeapon);
 }
 function weaponChange(weapon) {
@@ -170,4 +181,31 @@ function weaponRemove(weapon) {
      delete counter[weapon];
      deleteParameter('w' + weapon, true);
      $('.weapon.w' + weapon).remove();
+}
+
+function variationAdd(weapon) {
+     
+}
+function variationChange(weapon, variation) {
+     
+}
+function variationRemove(weapon, variation) {
+     
+}
+
+function perkAdd(weapon, variation) {
+     
+}
+function perkTypeChange(weapon, variation, perk) {
+     
+}
+function perkValueChange(weapon, variation, perk) {
+     
+}
+function perkRemove(weapon, variation, perk) {
+     
+}
+
+function recalculate() {
+     
 }
