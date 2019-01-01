@@ -202,9 +202,10 @@ function perkTypeChange(weapon, variation, perk) {
      for(y in perks.damage.values) {
           $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).append('<option value="' + y + '">' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[y] + '</option>');
      }
+     updateParameter('w' + weapon + 'v' + variation + 'p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val());
 }
 function perkValueChange(weapon, variation, perk) {
-     
+     updateParameter('w' + weapon + 'v' + variation + 'p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val());
 }
 function perkRemove(weapon, variation, perk) {
      
