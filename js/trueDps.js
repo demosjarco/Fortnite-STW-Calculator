@@ -104,7 +104,7 @@ $.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFq
           $("main").append('<div id="newWeapon" onClick="addWeapon()"><i class="material-icons md-48">add_circle_outline</i></div>');
           
           // Load from url
-          console.log(getAllParameters());
+          loadExisting();
      } else {
           $("main").append('<p id="error">Error loading from Whitesushi spreadsheet</p>');
      }
@@ -112,18 +112,43 @@ $.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFq
 
 var counter = {};
 
-function addWeapon() {
-     var biggestLastWeapon = 0;
-     if (Object.keys(counter).length > 0)
-          biggestLastWeapon = Object.keys(counter)[Object.keys(counter).length - 1];
-     counter[biggestLastWeapon + 1] = {};
+function loadExisting() {
+     const weaponKey = /^w{1}\d{1}$/;
+     const weaponNumber = /(?!w){1}\d{1}/;
+     const variationKey = /^w{1}\d{1}v{1}\d{1}$/;
+     const perkKey = /^w{1}\d{1}v{1}\d{1}p{1}\d{1}$/;
+     getAllParameters().forEach(function(parameter) {
+          if (weaponKey.test(parameter[0]))
+               addWeapon(weaponNumber.exec(parameter[0]), parameter[1]);
+     });
+}
+
+function addWeapon(weaponNumber, weaponName) {
+     var newWeapon = 1;
+     
+     if (weaponNumber == undefined) {
+          if (Object.keys(counter).length > 0) {
+               const biggestLastWeapon = parseInt(Object.keys(counter)[Object.keys(counter).length - 1]);
+               newWeapon = biggestLastWeapon + 1;
+          }
+     } else {
+          newWeapon = weaponNumber;
+     }
+     counter[newWeapon] = {};
      
      var weaponOptionString = '';
      weaponInfo.forEach(function(weapon) {
           weaponOptionString += '<option value="' + weapon.name + '">' + weapon.name + '</option>';
      });
      
-     $("#newWeapon").before('<div class="weapon w' + (biggestLastWeapon + 1) + '"><header><select class="weaponPick w' + (biggestLastWeapon + 1) + '" onchange="weaponChange(' + (biggestLastWeapon + 1) + ')">' + weaponOptionString + '</select><div class="delete" onClick=""><i class="material-icons md-24">delete_sweep</i></div></header><div>');
+     $("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><select class="weaponPick w' + newWeapon + '" onchange="weaponChange(' + newWeapon + ')">' + weaponOptionString + '</select><div class="delete" onClick=""><i class="material-icons md-24">delete_sweep</i></div></header><div>');
+     
+     if (weaponNumber != undefined && weaponName != undefined) {
+          $('.weaponPick.w' + weaponNumber).val(weaponName);
+     }
+     
+     updateParameter('w' + newWeapon, $('.weaponPick.w' + newWeapon).val());
+     weaponChange(newWeapon);
 }
 
 function weaponChange(weapon) {
@@ -139,4 +164,6 @@ function weaponChange(weapon) {
                $('.weapon.w' + weapon).addClass(weaponInfo.rarity);
           }
      });
+     
+     updateParameter('w' + weapon, $('.weaponPick.w' + weapon).val());
 }
