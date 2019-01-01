@@ -197,7 +197,11 @@ function perkAdd(weapon, variation) {
      
 }
 function perkTypeChange(weapon, variation, perk) {
-     
+     $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).empty();
+     var y;
+     for(y in perks.damage.values) {
+          $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).append('<option value="' + y + '">' + perks[$('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val()].values[y] + '</option>');
+     }
 }
 function perkValueChange(weapon, variation, perk) {
      
