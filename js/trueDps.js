@@ -141,7 +141,7 @@ function addWeapon(weaponNumber, weaponName) {
           weaponOptionString += '<option value="' + weapon.name + '">' + weapon.name + '</option>';
      });
      
-     $("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><select class="weaponPick w' + newWeapon + '" onchange="weaponChange(' + newWeapon + ')">' + weaponOptionString + '</select><div class="delete" onClick=""><i class="material-icons md-24">delete_sweep</i></div></header><div>');
+     $("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><select class="weaponPick w' + newWeapon + '" onchange="weaponChange(' + newWeapon + ')">' + weaponOptionString + '</select><div class="delete" onClick=""><i class="material-icons md-24">delete_sweep</i></div></header><div class="results"></div><div>');
      
      if (weaponNumber != undefined && weaponName != undefined) {
           $('.weaponPick.w' + weaponNumber).val(weaponName);
