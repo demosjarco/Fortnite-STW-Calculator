@@ -110,7 +110,7 @@ const perks = {
 		}
 	},
      nature: {
-		name: 'Ele. Nature & Damage',
+		name: 'Element Nature & Damage',
 		values: {
 			c: 0,
 			u: 5,
