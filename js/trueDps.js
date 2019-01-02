@@ -265,7 +265,10 @@ function perkAdd(weapon, variation) {
      for(y in perks.damage.values) {
           perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
      }
-     const newPerk = parseInt(Object.keys(counter[weapon][variation])[Object.keys(counter[weapon][variation]).length - 1]) + 1;
+     var newPerk = 1;
+     if (Object.keys(counter[weapon][variation]).length > 0) {
+          newPerk = parseInt(Object.keys(counter[weapon][variation])[Object.keys(counter[weapon][variation]).length - 1]) + 1;
+     }
      counter[weapon][variation][newPerk] = null;
      $('.newPerk.w' + weapon + '.v' + variation).before('<div class="perkRow w' + weapon + ' v' + variation + ' p' + newPerk + '"><select class="perkType w' + weapon + ' v' + variation + ' p' + newPerk + '" onchange="perkTypeChange(' + weapon + ', ' + variation + ', ' + newPerk + ')"> ' + perkTypeOptionString + ' </select><select class="perkValue w' + weapon + ' v' + variation + ' p' + newPerk + '" onchange="perkValueChange(' + weapon + ', ' + variation + ', ' + newPerk + ')">' + perkValueOptionString + '</select><div class="delete" onClick="perkRemove(' + weapon + ',' + variation + ',' + newPerk + ')"><i class="material-icons md-24">delete</i></div></div>');
      
