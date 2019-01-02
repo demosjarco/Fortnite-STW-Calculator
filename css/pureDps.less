@@ -128,7 +128,7 @@ main {
                     }
                }
                
-               > div.variation {
+               .variation {
                     margin: 10px 5px;
                     
                     &:first-child {
@@ -150,8 +150,17 @@ main {
                                    border-top: 1px solid white;
                               }
                               
-                              span.perkName {
-                                   display: block;
+                              .delete {
+                                   display: inline-block;
+                                   float: right;
+                                   height: 24px + 3 * 2;
+                                   width: 24px + 3 * 2;
+                                   padding: 3px;
+                                   
+                                   background-color: #b00000;
+                                   color: white;
+                                   
+                                   cursor: pointer;
                               }
                          }
                          
