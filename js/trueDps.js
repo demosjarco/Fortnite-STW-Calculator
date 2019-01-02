@@ -78,6 +78,56 @@ const perks = {
 			e: 35,
 			l: 42
 		}
+	},
+     energy: {
+		name: 'Element Energy & Damage',
+		values: {
+			c: 0,
+			u: 5,
+			r: 10,
+			e: 15,
+			l: 20
+		}
+	},
+     fire: {
+		name: 'Element Fire & Damage',
+		values: {
+			c: 0,
+			u: 5,
+			r: 10,
+			e: 15,
+			l: 20
+		}
+	},
+     water: {
+		name: 'Element Water & Damage',
+		values: {
+			c: 0,
+			u: 5,
+			r: 10,
+			e: 15,
+			l: 20
+		}
+	},
+     nature: {
+		name: 'Ele. Nature & Damage',
+		values: {
+			c: 0,
+			u: 5,
+			r: 10,
+			e: 15,
+			l: 20
+		}
+	},
+     physical: {
+		name: 'Element Physical & Damage',
+		values: {
+			c: 20,
+			u: 26,
+			r: 32,
+			e: 38,
+			l: 44
+		}
 	}
 };
 
