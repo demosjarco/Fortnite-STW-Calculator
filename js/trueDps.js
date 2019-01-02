@@ -144,6 +144,14 @@ function loadExisting() {
                          }
                     } else {
                          // Variation doesn't exist
+                         variationAdd(weaponNumber.exec(parameter[0]));
+                         $('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val(perkType.exec(parameter[1]));
+                         // Update perk values
+                         $('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).empty();
+                         var y;
+                         for(y in perks.damage.values) {
+                              $('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).append('<option value="' + y + '">' + perks[$('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val()].values[y] + '</option>');
+                         }
                     }
                }
                if ($('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).length) {
