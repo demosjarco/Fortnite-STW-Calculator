@@ -123,8 +123,21 @@ function loadExisting() {
      const variationNumber = /(?<=v)\d+/;
      const perkNumber = /(?<=p)\d+/;
      getAllParameters().forEach(function(parameter) {
-          if (weaponKey.test(parameter[0]))
+          if (weaponKey.test(parameter[0])) {
                weaponAdd(weaponNumber.exec(parameter[0]), parameter[1]);
+          } else if (perkKey.test(parameter[0])) {
+               if ($('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).length) {
+                    $('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val(perkType.exec(parameter[1]));
+               } else {
+                    // Doesn't exist
+               }
+               if ($('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).length) {
+                    $('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val(perkValue.exec(parameter[1]));
+               } else {
+                    // Doesn't exist
+               }
+               updateParameter('w' + weaponNumber.exec(parameter[0]) + 'v' + variationNumber.exec(parameter[0]) + 'p' + perkNumber.exec(parameter[0]), $('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val() + '.' + $('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val());
+          }
      });
 }
 
