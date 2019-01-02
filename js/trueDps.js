@@ -150,6 +150,9 @@ $.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFq
                     ammo: jsonData.values[i][15],
                });
           }
+          weaponInfo.sort(function(a, b) {
+               return a.name.localeCompare(b.name);
+          });
           $("#loading").remove();
           $("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
           
