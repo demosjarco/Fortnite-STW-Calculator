@@ -108,6 +108,18 @@ main div.weapon div.variations {
   display: inline-flex;
   float: left;
 }
+main div.weapon div.variations .newVariation {
+  position: relative;
+  width: 100px;
+  height: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.66666667);
+  cursor: pointer;
+}
+main div.weapon div.variations .newVariation i {
+  position: absolute;
+  top: 88px;
+  left: 38px;
+}
 main div.weapon div.variations > div.variation {
   margin: 10px 5px;
 }
