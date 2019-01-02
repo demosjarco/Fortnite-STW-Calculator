@@ -155,34 +155,34 @@ main div.weapon div.results {
   float: right;
   color: black;
 }
-main div.weapon div.results > div.variation {
+main div.weapon div.results .result {
   margin: 10px 5px;
 }
-main div.weapon div.results > div.variation:first-child {
+main div.weapon div.results .result:first-child {
   margin-left: 10px;
 }
-main div.weapon div.results > div.variation:last-child {
+main div.weapon div.results .result:last-child {
   margin-right: 10px;
 }
-main div.weapon div.results > div.variation div.stats {
+main div.weapon div.results .result div.stats {
   display: flex;
   flex-direction: column;
 }
-main div.weapon div.results > div.variation div.stats div.statRow {
+main div.weapon div.results .result div.stats div.statRow {
   border-bottom: 1px solid white;
 }
-main div.weapon div.results > div.variation div.stats div.statRow:first-child {
+main div.weapon div.results .result div.stats div.statRow:first-child {
   border-top: 1px solid white;
 }
-main div.weapon div.results > div.variation div.stats div.statRow:last-child {
+main div.weapon div.results .result div.stats div.statRow:last-child {
   border-bottom: none;
 }
-main div.weapon div.results > div.variation div.stats div.statRow span.variation {
+main div.weapon div.results .result div.stats div.statRow span.variation {
   font-weight: bold;
 }
-main div.weapon div.results > div.variation div.stats div.statRow span.variation.positive {
+main div.weapon div.results .result div.stats div.statRow span.variation.positive {
   color: green;
 }
-main div.weapon div.results > div.variation div.stats div.statRow span.variation.negative {
+main div.weapon div.results .result div.stats div.statRow span.variation.negative {
   color: red;
 }
