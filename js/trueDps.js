@@ -286,7 +286,9 @@ function perkValueChange(weapon, variation, perk) {
      updateParameter('w' + weapon + 'v' + variation + 'p' + perk, $('.perkType.w' + weapon + '.v' + variation + '.p' + perk).val() + '.' + $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).val());
 }
 function perkRemove(weapon, variation, perk) {
-     
+     delete counter[weapon][variation][perk];
+     deleteParameter('w' + weapon + 'v' + variation + 'p' + perk, true);
+     $('.perkRow.w' + weapon + '.v' + variation + '.p' + perk).remove();
 }
 
 function recalculate() {
