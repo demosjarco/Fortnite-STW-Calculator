@@ -129,7 +129,22 @@ function loadExisting() {
                if ($('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).length) {
                     $('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val(perkType.exec(parameter[1]));
                } else {
-                    // Doesn't exist
+                    // Perk doesn't exist
+                    if ($('.variation.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0])).length) {
+                         // Variation exists but not perk
+                         // Create new perk
+                         perkAdd(weaponNumber.exec(parameter[0]), variationNumber.exec(parameter[0]));
+                         // Set perk type
+                         $('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val(perkType.exec(parameter[1]));
+                         // Update perk values
+                         $('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).empty();
+                         var y;
+                         for(y in perks.damage.values) {
+                              $('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).append('<option value="' + y + '">' + perks[$('.perkType.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val()].values[y] + '</option>');
+                         }
+                    } else {
+                         // Variation doesn't exist
+                    }
                }
                if ($('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).length) {
                     $('.perkValue.w' + weaponNumber.exec(parameter[0]) + '.v' + variationNumber.exec(parameter[0]) + '.p' + perkNumber.exec(parameter[0])).val(perkValue.exec(parameter[1]));
