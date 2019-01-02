@@ -209,7 +209,21 @@ function variationRemove(weapon, variation) {
 }
 
 function perkAdd(weapon, variation) {
+     var x;
+     var perkTypeOptionString = '';
+     for(x in perks) {
+          perkTypeOptionString += '<option value="' + x + '">' + perks[x].name + '</option>';
+     }
+     var y;
+     var perkValueOptionString = '';
+     for(y in perks.damage.values) {
+          perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
+     }
+     const newPerk = parseInt(Object.keys(counter[weapon][variation])[Object.keys(counter[weapon][variation]).length - 1]) + 1;
+     counter[weapon][variation][newPerk] = null;
+     $('.newPerk.w' + weapon + '.v' + variation).before('<div class="perkRow w' + weapon + ' v' + variation + ' p' + newPerk + '"><select class="perkType w' + weapon + ' v' + variation + ' p' + newPerk + '" onchange="perkTypeChange(' + weapon + ', ' + variation + ', ' + newPerk + ')"> ' + perkTypeOptionString + ' </select><select class="perkValue w' + weapon + ' v' + variation + ' p' + newPerk + '" onchange="perkValueChange(' + weapon + ', ' + variation + ', ' + newPerk + ')">' + perkValueOptionString + '</select></div>');
      
+     updateParameter('w' + weapon + 'v' + variation + 'p' + newPerk, $('.perkType.w' + weapon + '.v' + variation + '.p' + newPerk).val() + '.' + $('.perkValue.w' + weapon + '.v' + variation + '.p' + newPerk).val());
 }
 function perkTypeChange(weapon, variation, perk) {
      $('.perkValue.w' + weapon + '.v' + variation + '.p' + perk).empty();
