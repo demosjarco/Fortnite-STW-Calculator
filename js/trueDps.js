@@ -215,7 +215,29 @@ function weaponRemove(weapon) {
 }
 
 function variationAdd(weapon) {
+     var newVariation = 1;
      
+     if (Object.keys(counter[weapon]).length > 0) {
+          const biggestLastVariation = parseInt(Object.keys(counter[weapon])[Object.keys(counter[weapon]).length - 1]);
+          newVariation = biggestLastVariation + 1;
+     }
+     counter[weapon][newVariation] = {1: null};
+     
+     var x;
+     var perkTypeOptionString = '';
+     for(x in perks) {
+          perkTypeOptionString += '<option value="' + x + '">' + perks[x].name + '</option>';
+     }
+     var y;
+     var perkValueOptionString = '';
+     for(y in perks.damage.values) {
+          perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
+     }
+     
+     $('.newVariation.w' + weapon).before('<div class="variation w' + weapon + ' v' + newVariation + '"><header><span>Variation ' + newVariation + '</span><div class="delete" onclick="variationRemove(' + weapon + ', ' + newVariation + ')"><i class="material-icons md-24">delete</i></div></header><div class="perks w' + weapon + ' v' + newVariation + '"><div class="perkRow w' + weapon + ' v' + newVariation + ' p1"><select class="perkType w' + weapon + ' v' + newVariation + ' p1" onchange="perkTypeChange(' + weapon + ', ' + newVariation + ', 1)">' + perkTypeOptionString + '</select><select class="perkValue w' + weapon + ' v' + newVariation + ' p1" onchange="perkValueChange(' + weapon + ', ' + newVariation + ', 1)">' + perkValueOptionString + '</select></div><div class="newPerk w' + weapon + ' v' + newVariation + '" onclick="perkAdd(' + weapon + ', ' + newVariation + ')"><i class="material-icons md-24">add_circle_outline</i></div></div></div>');
+     $('.result.w' + weapon + '.v' + (newVariation - 1)).after('<div class="result w' + weapon + ' v' + newVariation + '"><header><span>Variation ' + newVariation + '</span></header><div class="stats"><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value dmgShot"></span><span class="statName"> Dmg/shot</span></div><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value dmgSec"></span><span class="statName"> Dmg/sec</span></div><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value dur"></span><span class="statName"> Durability</span></div><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value effDmg"></span><span class=""> Effective Dmg</span></div></div></div>');
+     
+     updateParameter('w' + weapon + 'v' + newVariation + 'p1', $('.perkType.w' + weapon + '.v' + newVariation + '.p1').val() + '.' + $('.perkValue.w' + weapon + '.v' + newVariation + '.p1').val());
 }
 function variationRemove(weapon, variation) {
      
