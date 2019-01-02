@@ -248,7 +248,10 @@ function variationAdd(weapon) {
      updateParameter('w' + weapon + 'v' + newVariation + 'p1', $('.perkType.w' + weapon + '.v' + newVariation + '.p1').val() + '.' + $('.perkValue.w' + weapon + '.v' + newVariation + '.p1').val());
 }
 function variationRemove(weapon, variation) {
-     
+     delete counter[weapon][variation];
+     deleteParameter('w' + weapon + 'v' + variation, true);
+     $('.variation.w' + weapon + '.v' + variation).remove();
+     $('.result.w' + weapon + '.v' + variation).remove();
 }
 
 function perkAdd(weapon, variation) {
