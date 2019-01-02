@@ -114,9 +114,14 @@ var counter = {};
 
 function loadExisting() {
      const weaponKey = /^w{1}\d+$/;
-     const weaponNumber = /(?!w){1}\d+/;
-     const variationKey = /^w{1}\d+v{1}\d+$/;
      const perkKey = /^w{1}\d+v{1}\d+p{1}\d+$/;
+     
+     const perkType = /^[^.]+/;
+     const perkValue = /[^.]+$/;
+     
+     const weaponNumber = /(?<=w)\d+/;
+     const variationNumber = /(?<=v)\d+/;
+     const perkNumber = /(?<=p)\d+/;
      getAllParameters().forEach(function(parameter) {
           if (weaponKey.test(parameter[0]))
                weaponAdd(weaponNumber.exec(parameter[0]), parameter[1]);
