@@ -131,6 +131,8 @@ const perks = {
 	}
 };
 
+var weaponInfo = [];
+
 if (typeof(Storage) !== "undefined") {
 	var maxAge = new Date();
 	maxAge.setDate(maxAge.getDate()-2);
@@ -159,8 +161,6 @@ function cacheJson(key, array = []) {
 		localStorage.setItem(key + 'Date', new Date());
 	}
 }
-
-var weaponInfo = [];
 
 function loadFromSheets(key, ranged = true, melee = true) {
 	let rangedDone = false;
