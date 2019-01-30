@@ -176,8 +176,9 @@ function loadFromSheets(key, ranged = true, melee = true) {
 function loadRanged(key, callback) {
 	$.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFqjqXQT7wyyPA1unctnaPHM/values/Ranged?key=' + key, function(jsonData) {
 		if (jsonData && ('values' in jsonData)) {
+			let tempWeaponArray = [];
 			for(var i = 3; i < jsonData.values.length; i++) {
-				weaponInfo.push({
+				tempWeaponArray.push({
 					name: jsonData.values[i][1],
 					rarity: jsonData.values[i][2].toLowerCase(),
 					dmg: jsonData.values[i][4],
@@ -190,9 +191,11 @@ function loadRanged(key, callback) {
 					ammo: jsonData.values[i][15],
 				});
 			}
-			weaponInfo.sort(function(a, b) {
+			tempWeaponArray.sort(function(a, b) {
 				return a.name.localeCompare(b.name);
 			});
+			
+			weaponInfo = weaponInfo.concat(tempWeaponArray);
 			
 			callback(true);
 		} else {
