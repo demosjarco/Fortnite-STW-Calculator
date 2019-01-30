@@ -173,17 +173,20 @@ function loadRanged(key) {
 			callback(true);
 		} else {
 			callback(false);
-			$("main").append('<p id="error">Error loading from Whitesushi spreadsheet</p>');
 		}
 	});
 }
 
-function beginUI() {
-	$("#loading").remove();
-	$("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
-	
-	// Load from url
-	loadExisting();
+function beginUI(success = true) {
+	if (success) {
+		$("#loading").remove();
+		$("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
+		
+		// Load from url
+		loadExisting();
+	} else {
+		$("main").append('<p id="error">Error loading from Whitesushi spreadsheet</p>');
+	}
 }
 
 var counter = {};
