@@ -137,11 +137,12 @@ if (typeof(Storage) !== "undefined") {
 	
 	let needToLoadRanged = true;
 	let needToLoadMelee = true;
-	if (localStorage.getItem("rangedStats") !== null && localStorage.getItem("rangedStatsDate") !== null && localStorage.getItem("rangedStatsDate") > maxAge) {
+	
+	if (localStorage.getItem("rangedStats") !== null && localStorage.getItem("rangedStatsDate") !== null && new Date(localStorage.getItem("rangedStatsDate")) < maxAge) {
 		needToLoadRanged = false;
 		weaponInfo = weaponInfo.concat(JSON.parse(localStorage.getItem("rangedStats")));
 	}
-	if (localStorage.getItem("meleeStats") !== null && localStorage.getItem("meleeStatsDate") !== null && localStorage.getItem("meleeStatsDate") > maxAge) {
+	if (localStorage.getItem("meleeStats") !== null && localStorage.getItem("meleeStatsDate") !== null && new Date(localStorage.getItem("meleeStatsDate")) < maxAge) {
 		needToLoadMelee = false;
 	}
 	
