@@ -144,8 +144,9 @@ if (typeof(Storage) !== "undefined") {
 	loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
 }
 
-function loadFromSheets(key) {
-	loadRanged(key);
+function loadFromSheets(key, ranged = true) {
+	if (ranged)
+		loadRanged(key);
 }
 
 function loadRanged(key) {
