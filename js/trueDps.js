@@ -169,15 +169,21 @@ function loadRanged(key) {
 			weaponInfo.sort(function(a, b) {
 				return a.name.localeCompare(b.name);
 			});
-			$("#loading").remove();
-			$("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
 			
-			// Load from url
-			loadExisting();
+			callback(true);
 		} else {
+			callback(false);
 			$("main").append('<p id="error">Error loading from Whitesushi spreadsheet</p>');
 		}
 	});
+}
+
+function beginUI() {
+	$("#loading").remove();
+	$("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
+	
+	// Load from url
+	loadExisting();
 }
 
 var counter = {};
