@@ -144,12 +144,36 @@ if (typeof(Storage) !== "undefined") {
 	loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
 }
 
-function loadFromSheets(key, ranged = true) {
-	if (ranged)
-		loadRanged(key);
+function loadFromSheets(key, ranged = true, melee = true) {
+	let rangedDone = false;
+	if (!ranged)
+		rangedDone = true;
+	let meleeDone = false;
+	if (!melee)
+		meleeDone = true;
+	
+	if (ranged) {
+		loadRanged(key, function(success) {
+			rangedDone = true;
+			checkIfDone(success);
+		});
+	}
+	if (melee) {
+		// Temp
+		meleeDone = true;
+		checkIfDone(true);
+	}
+	
+	function checkIfDone(success = true) {
+		if (!success) {
+			beginUI(success);
+		} else if (rangedDone && meleeDone) {
+			beginUI(success);
+		}
+	}
 }
 
-function loadRanged(key) {
+function loadRanged(key, callback) {
 	$.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFqjqXQT7wyyPA1unctnaPHM/values/Ranged?key=' + key, function(jsonData) {
 		if (jsonData && ('values' in jsonData)) {
 			for(var i = 3; i < jsonData.values.length; i++) {
