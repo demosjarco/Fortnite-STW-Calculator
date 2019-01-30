@@ -133,8 +133,15 @@ const perks = {
 
 var weaponInfo = [];
 
-// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
-$.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFqjqXQT7wyyPA1unctnaPHM/values/Ranged?key=AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI' , function(jsonData) {
+var key = '';
+try {
+	const privateKey = require('./localKey.js');
+	key = privateKey.privateKey;
+} catch (e) {
+	// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
+	key = 'AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI';
+}
+$.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFqjqXQT7wyyPA1unctnaPHM/values/Ranged?key=' + key, function(jsonData) {
      if (jsonData && ('values' in jsonData)) {
           for(var i = 3; i < jsonData.values.length; i++) {
                weaponInfo.push({
