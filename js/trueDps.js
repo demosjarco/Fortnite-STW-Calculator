@@ -174,6 +174,10 @@ function loadFromSheets(key, ranged = true, melee = true) {
 		if (!success) {
 			beginUI(success);
 		} else if (rangedDone && meleeDone) {
+			weaponInfo.sort(function(a, b) {
+				return a.name.localeCompare(b.name);
+			});
+			
 			beginUI(success);
 		}
 	}
