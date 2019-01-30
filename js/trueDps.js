@@ -131,13 +131,21 @@ const perks = {
 	}
 };
 
-var weaponInfo = [];
-
 if (typeof(Storage) !== "undefined") {
-	// Code for localStorage/sessionStorage.
-	if (localStorage) {
-		
+	var maxAge = new Date();
+	maxAge.setDate(maxAge.getDate()-2);
+	
+	let needToLoadRanged = true;
+	let needToLoadMelee = true;
+	if (localStorage.getItem("rangedStats") !== null && localStorage.getItem("rangedStatsDate") !== null && localStorage.getItem("rangedStatsDate") > maxAge) {
+		needToLoadRanged = false;
+		JSON.parse(localStorage.getItem("rangedStats"));
 	}
+	if (localStorage.getItem("meleeStats") !== null && localStorage.getItem("meleeStatsDate") !== null && localStorage.getItem("meleeStatsDate") > maxAge) {
+		needToLoadMelee = false;
+	}
+	
+	loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI', needToLoadRanged, needToLoadMelee);
 } else {
 	console.warn('Local storage not supported or disabled for this site. Will run off live copy from API. This may cause problems due to low rate limits.');
 	// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
@@ -150,6 +158,9 @@ function cacheJson(key, array = []) {
 		localStorage.setItem(key + 'Date', new Date());
 	}
 }
+
+var weaponInfo = [];
+
 function loadFromSheets(key, ranged = true, melee = true) {
 	let rangedDone = false;
 	if (!ranged)
