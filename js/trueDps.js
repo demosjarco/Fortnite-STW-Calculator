@@ -133,42 +133,38 @@ const perks = {
 
 var weaponInfo = [];
 
-var key = '';
-try {
-	const privateKey = require('./localKey.js');
-	key = privateKey.privateKey;
-} catch (e) {
-	// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
-	key = 'AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI';
+function loadFromSheets(key) {
+	$.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFqjqXQT7wyyPA1unctnaPHM/values/Ranged?key=' + key, function(jsonData) {
+		if (jsonData && ('values' in jsonData)) {
+			for(var i = 3; i < jsonData.values.length; i++) {
+				weaponInfo.push({
+					name: jsonData.values[i][1],
+					rarity: jsonData.values[i][2].toLowerCase(),
+					dmg: jsonData.values[i][4],
+					chc: jsonData.values[i][7],
+					chd: jsonData.values[i][8],
+					fireRate: jsonData.values[i][10],
+					magSize: jsonData.values[i][11],
+					reload: jsonData.values[i][14],
+					hs: jsonData.values[i][9],
+					ammo: jsonData.values[i][15],
+				});
+			}
+			weaponInfo.sort(function(a, b) {
+				return a.name.localeCompare(b.name);
+			});
+			$("#loading").remove();
+			$("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
+			
+			// Load from url
+			loadExisting();
+		} else {
+			$("main").append('<p id="error">Error loading from Whitesushi spreadsheet</p>');
+		}
+	});
 }
-$.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFqjqXQT7wyyPA1unctnaPHM/values/Ranged?key=' + key, function(jsonData) {
-     if (jsonData && ('values' in jsonData)) {
-          for(var i = 3; i < jsonData.values.length; i++) {
-               weaponInfo.push({
-                    name: jsonData.values[i][1],
-                    rarity: jsonData.values[i][2].toLowerCase(),
-                    dmg: jsonData.values[i][4],
-                    chc: jsonData.values[i][7],
-                    chd: jsonData.values[i][8],
-                    fireRate: jsonData.values[i][10],
-                    magSize: jsonData.values[i][11],
-                    reload: jsonData.values[i][14],
-                    hs: jsonData.values[i][9],
-                    ammo: jsonData.values[i][15],
-               });
-          }
-          weaponInfo.sort(function(a, b) {
-               return a.name.localeCompare(b.name);
-          });
-          $("#loading").remove();
-          $("main").append('<div id="newWeapon" onClick="weaponAdd()"><i class="material-icons md-48">add_circle_outline</i></div>');
-          
-          // Load from url
-          loadExisting();
-     } else {
-          $("main").append('<p id="error">Error loading from Whitesushi spreadsheet</p>');
-     }
-});
+// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
+loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
 
 var counter = {};
 
