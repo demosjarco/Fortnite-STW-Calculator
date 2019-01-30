@@ -133,27 +133,29 @@ const perks = {
 
 var weaponInfo = [];
 
-if (typeof(Storage) !== "undefined") {
-	var maxAge = new Date();
-	maxAge.setDate(maxAge.getDate()-2);
-	
-	let needToLoadRanged = true;
-	let needToLoadMelee = true;
-	
-	if (localStorage.getItem("rangedStats") !== null && localStorage.getItem("rangedStatsDate") !== null && new Date(localStorage.getItem("rangedStatsDate")) > maxAge) {
-		needToLoadRanged = false;
-		weaponInfo = weaponInfo.concat(JSON.parse(localStorage.getItem("rangedStats")));
+$(document).ready(function() { 
+	if (typeof(Storage) !== "undefined") {
+		var maxAge = new Date();
+		maxAge.setDate(maxAge.getDate()-2);
+		
+		let needToLoadRanged = true;
+		let needToLoadMelee = true;
+		
+		if (localStorage.getItem("rangedStats") !== null && localStorage.getItem("rangedStatsDate") !== null && new Date(localStorage.getItem("rangedStatsDate")) > maxAge) {
+			needToLoadRanged = false;
+			weaponInfo = weaponInfo.concat(JSON.parse(localStorage.getItem("rangedStats")));
+		}
+		if (localStorage.getItem("meleeStats") !== null && localStorage.getItem("meleeStatsDate") !== null && new Date(localStorage.getItem("meleeStatsDate")) > maxAge) {
+			needToLoadMelee = false;
+		}
+		
+		loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI', needToLoadRanged, needToLoadMelee);
+	} else {
+		console.warn('Local storage not supported or disabled for this site. Will run off live copy from API. This may cause problems due to low rate limits.');
+		// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
+		loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
 	}
-	if (localStorage.getItem("meleeStats") !== null && localStorage.getItem("meleeStatsDate") !== null && new Date(localStorage.getItem("meleeStatsDate")) > maxAge) {
-		needToLoadMelee = false;
-	}
-	
-	loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI', needToLoadRanged, needToLoadMelee);
-} else {
-	console.warn('Local storage not supported or disabled for this site. Will run off live copy from API. This may cause problems due to low rate limits.');
-	// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
-	loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
-}
+});
 
 function cacheJson(key, array = []) {
 	if (typeof(Storage) !== "undefined") {
