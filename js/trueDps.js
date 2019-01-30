@@ -134,6 +134,10 @@ const perks = {
 var weaponInfo = [];
 
 function loadFromSheets(key) {
+	loadRanged(key);
+}
+
+function loadRanged(key) {
 	$.getJSON('https://sheets.googleapis.com/v4/spreadsheets/1iWt-LgADVmRdQnS9OomDFqjqXQT7wyyPA1unctnaPHM/values/Ranged?key=' + key, function(jsonData) {
 		if (jsonData && ('values' in jsonData)) {
 			for(var i = 3; i < jsonData.values.length; i++) {
