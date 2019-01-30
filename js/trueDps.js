@@ -193,7 +193,9 @@ function loadFromSheets(key, ranged = true, melee = true) {
 			beginUI(success);
 		}
 	}
-	checkIfDone();
+	if (!ranged && !melee) {
+		beginUI();
+	}
 }
 
 function loadRanged(key, callback) {
