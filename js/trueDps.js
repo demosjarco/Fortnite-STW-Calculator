@@ -217,7 +217,7 @@ function loadRanged(key, callback) {
 				return a.name.localeCompare(b.name);
 			});
 			
-			cacheJson('ranged', tempWeaponArray);
+			cacheJson('rangedStats', JSON.stringify(tempWeaponArray));
 			weaponInfo = weaponInfo.concat(tempWeaponArray);
 			
 			callback(true);
