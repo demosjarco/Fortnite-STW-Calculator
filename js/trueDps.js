@@ -344,6 +344,6 @@ function perkRemove(weapon, variation, perk) {
      $('.perkRow.w' + weapon + '.v' + variation + '.p' + perk).remove();
 }
 
-function recalculate() {
-     
+function recalculate(weapon, variation) {
+     //https://api.jquery.com/each/
 }
