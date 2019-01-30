@@ -144,6 +144,12 @@ if (typeof(Storage) !== "undefined") {
 	loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
 }
 
+function cacheJson(key, array = []) {
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem(key, array);
+		localStorage.setItem(key + 'Date', new Date());
+	}
+}
 function loadFromSheets(key, ranged = true, melee = true) {
 	let rangedDone = false;
 	if (!ranged)
@@ -195,6 +201,7 @@ function loadRanged(key, callback) {
 				return a.name.localeCompare(b.name);
 			});
 			
+			cacheJson('ranged', tempWeaponArray);
 			weaponInfo = weaponInfo.concat(tempWeaponArray);
 			
 			callback(true);
