@@ -133,6 +133,17 @@ const perks = {
 
 var weaponInfo = [];
 
+if (typeof(Storage) !== "undefined") {
+	// Code for localStorage/sessionStorage.
+	if (localStorage) {
+		
+	}
+} else {
+	console.warn('Local storage not supported or disabled for this site. Will run off live copy from API. This may cause problems due to low rate limits.');
+	// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
+	loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
+}
+
 function loadFromSheets(key) {
 	loadRanged(key);
 }
@@ -167,8 +178,6 @@ function loadRanged(key) {
 		}
 	});
 }
-// This key is generated and whitelisted only for this website (https://victhebeast.github.io/Fortnite-STW-Calculator/). No use in stealing it, it won't work anywhere else
-loadFromSheets('AIzaSyAN6zwwPn17G4Sr7NOs_j4Jo8GgZ7wPHHI');
 
 var counter = {};
 
