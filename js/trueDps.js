@@ -139,7 +139,7 @@ if (typeof(Storage) !== "undefined") {
 	let needToLoadMelee = true;
 	if (localStorage.getItem("rangedStats") !== null && localStorage.getItem("rangedStatsDate") !== null && localStorage.getItem("rangedStatsDate") > maxAge) {
 		needToLoadRanged = false;
-		JSON.parse(localStorage.getItem("rangedStats"));
+		weaponInfo = weaponInfo.concat(JSON.parse(localStorage.getItem("rangedStats")));
 	}
 	if (localStorage.getItem("meleeStats") !== null && localStorage.getItem("meleeStatsDate") !== null && localStorage.getItem("meleeStatsDate") > maxAge) {
 		needToLoadMelee = false;
