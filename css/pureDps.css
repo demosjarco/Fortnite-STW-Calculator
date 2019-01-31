@@ -37,6 +37,9 @@
 .material-icons.md-dark.md-inactive {
   color: rgba(0, 0, 0, 0.26);
 }
+* {
+  box-sizing: border-box;
+}
 main {
   display: flex;
   flex-wrap: wrap;
