@@ -309,9 +309,9 @@ function weaponAdd(weaponNumber, weaponName) {
      }
      counter[newWeapon] = {1: {1: null}};
      
-     var weaponOptionString = '';
+	let weaponList = [];
      weaponInfo.forEach(function(weapon) {
-          weaponOptionString += '<option value="' + weapon.name + '">' + weapon.name + '</option>';
+		weaponList.push(weapon.name);
      });
      var x;
      var perkTypeOptionString = '';
