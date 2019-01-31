@@ -11,6 +11,8 @@
 
 @lightnessIncrease: 30;
 
+@error: hsl(0, 100%, 50%);
+@errorLight: hsl(hue(@error), saturation(@error), lightness(@error) + @lightnessIncrease);
 @common: hsl(0, 0%, 48%);
 @commonLight: hsl(hue(@common), saturation(@common), lightness(@common) + @lightnessIncrease);
 @uncommon: hsl(97, 73%, 27%);
@@ -49,6 +51,7 @@ main {
      div.weapon {
           margin: 5px;
           color: white;
+		background-color: @errorLight;
           
           &.common {
                background-color: @common;
