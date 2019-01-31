@@ -297,42 +297,42 @@ function loadExisting() {
 }
 
 function weaponAdd(weaponNumber, weaponName) {
-     var newWeapon = 1;
-     
-     if (weaponNumber == undefined) {
-          if (Object.keys(counter).length > 0) {
-               const biggestLastWeapon = parseInt(Object.keys(counter)[Object.keys(counter).length - 1]);
-               newWeapon = biggestLastWeapon + 1;
-          }
-     } else {
-          newWeapon = weaponNumber;
-     }
-     counter[newWeapon] = {1: {1: null}};
-     
+	var newWeapon = 1;
+	
+	if (weaponNumber == undefined) {
+		if (Object.keys(counter).length > 0) {
+			const biggestLastWeapon = parseInt(Object.keys(counter)[Object.keys(counter).length - 1]);
+			newWeapon = biggestLastWeapon + 1;
+		}
+	} else {
+		newWeapon = weaponNumber;
+	}
+	counter[newWeapon] = {1: {1: null}};
+	
 	let weaponList = [];
-     weaponInfo.forEach(function(weapon) {
+	weaponInfo.forEach(function(weapon) {
 		weaponList.push(weapon.name);
-     });
-     var x;
-     var perkTypeOptionString = '';
-     for(x in perks) {
-          perkTypeOptionString += '<option value="' + x + '">' + perks[x].name + '</option>';
-     }
-     var y;
-     var perkValueOptionString = '';
-     for(y in perks.damage.values) {
-          perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
-     }
+	});
+	var x;
+	var perkTypeOptionString = '';
+	for(x in perks) {
+		perkTypeOptionString += '<option value="' + x + '">' + perks[x].name + '</option>';
+	}
+	var y;
+	var perkValueOptionString = '';
+	for(y in perks.damage.values) {
+		perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
+	}
 	
 	$("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><div class="autocomplete weaponPick w' + newWeapon + '"><input class="weaponPick w' + newWeapon + '" type="text" autocomplete="off" placeholder="Weapon" onchange="weaponChange(' + newWeapon + ')" /></div><input class="weaponLevel w' + newWeapon + '" type="number" max="50" min="1" step="1" value="1" oninput="validity.valid||(value=\'1\');" /><input type="checkbox" class="weaponCrystal" /><span>Crystal</span><div class="delete" onClick="weaponRemove(' + newWeapon + ')"><i class="material-icons md-24">delete_sweep</i></div></header><div class="variations w' + newWeapon + '"><div class="variation w' + newWeapon + ' v1"><header><span>Variation 1</span><div class="delete" onClick="variationRemove(' + newWeapon + ', 1)"><i class="material-icons md-24">delete_forever</i></div></header><div class="perks w' + newWeapon + ' v1"><div class="perkRow w' + newWeapon + ' v1 p1"><select class="perkType w' + newWeapon + ' v1 p1" onChange="perkTypeChange(' + newWeapon + ', 1, 1)">' + perkTypeOptionString + '</select><select class="perkValue w' + newWeapon + ' v1 p1" onChange="perkValueChange(' + newWeapon + ', 1, 1)">' + perkValueOptionString + '</select><div class="delete" onClick="perkRemove(' + newWeapon + ',1,1)"><i class="material-icons md-24">delete</i></div></div><div class="newPerk w' + newWeapon + ' v1" onClick="perkAdd(' + newWeapon + ', 1)"><i class="material-icons md-24">add_circle_outline</i></div></div></div><div class="newVariation w' + newWeapon + '" onClick="variationAdd(' + newWeapon + ')"><i class="material-icons md-24">add_circle_outline</i></div></div><div class="results w' + newWeapon + '"><div class="result w' + newWeapon + ' v1"><header><span>Variation 1</span></header><div class="stats"><div class="statRow"><span class="w' + newWeapon + ' v1 value dmgShot"></span><span class="statName"> Dmg/shot</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value dmgSec"></span><span class="statName"> Dmg/sec</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value dur"></span><span class="statName"> Durability</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value effDmg"></span><span class="statName"> Effective Dmg</span></div></div></div></div>');
-     
-     if (weaponNumber != undefined && weaponName != undefined) {
-          $('.weaponPick.w' + weaponNumber).val(weaponName);
-     }
-     
-     updateParameter('w' + newWeapon, $('.weaponPick.w' + newWeapon).val());
-     updateParameter('w' + newWeapon + 'v1p1', $('.perkType.w' + newWeapon + '.v1.p1').val() + '.' + $('.perkValue.w' + newWeapon + '.v1.p1').val());
-     weaponChange(newWeapon);
+	
+	if (weaponNumber != undefined && weaponName != undefined) {
+		$('.weaponPick.w' + weaponNumber).val(weaponName);
+	}
+	
+	updateParameter('w' + newWeapon, $('.weaponPick.w' + newWeapon).val());
+	updateParameter('w' + newWeapon + 'v1p1', $('.perkType.w' + newWeapon + '.v1.p1').val() + '.' + $('.perkValue.w' + newWeapon + '.v1.p1').val());
+	weaponChange(newWeapon);
 }
 function weaponChange(weapon) {
      // Remove old rarity classes
