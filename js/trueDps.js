@@ -338,11 +338,11 @@ function weaponAdd(weaponNumber, weaponName) {
 }
 function weaponChange(weapon) {
      // Remove old rarity classes
-     $('.weaponPick.w' + weapon).removeClass('common');
-     $('.weaponPick.w' + weapon).removeClass('uncommon');
-     $('.weaponPick.w' + weapon).removeClass('rare');
-     $('.weaponPick.w' + weapon).removeClass('epic');
-     $('.weaponPick.w' + weapon).removeClass('legendary');
+     $('.weapon.w' + weapon).removeClass('common');
+     $('.weapon.w' + weapon).removeClass('uncommon');
+     $('.weapon.w' + weapon).removeClass('rare');
+     $('.weapon.w' + weapon).removeClass('epic');
+     $('.weapon.w' + weapon).removeClass('legendary');
      
      weaponInfo.forEach(function(weaponInfo) {
           if (weaponInfo.name == $('.weaponPick.w' + weapon).val()) {
