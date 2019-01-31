@@ -324,7 +324,9 @@ function weaponAdd(weaponNumber, weaponName) {
 		perkValueOptionString += '<option value="' + y + '">' + Object.values(perks)[0].values[y] + '</option>';
 	}
 	
-	$("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><div class="autocomplete weaponPick w' + newWeapon + '"><input class="weaponPick w' + newWeapon + '" type="text" autocomplete="off" placeholder="Weapon" onchange="weaponChange(' + newWeapon + ')" /></div><input class="weaponLevel w' + newWeapon + '" type="number" max="50" min="1" step="1" value="1" oninput="validity.valid||(value=\'1\');" /><input type="checkbox" class="weaponCrystal" /><span>Crystal</span><div class="delete" onClick="weaponRemove(' + newWeapon + ')"><i class="material-icons md-24">delete_sweep</i></div></header><div class="variations w' + newWeapon + '"><div class="variation w' + newWeapon + ' v1"><header><span>Variation 1</span><div class="delete" onClick="variationRemove(' + newWeapon + ', 1)"><i class="material-icons md-24">delete_forever</i></div></header><div class="perks w' + newWeapon + ' v1"><div class="perkRow w' + newWeapon + ' v1 p1"><select class="perkType w' + newWeapon + ' v1 p1" onChange="perkTypeChange(' + newWeapon + ', 1, 1)">' + perkTypeOptionString + '</select><select class="perkValue w' + newWeapon + ' v1 p1" onChange="perkValueChange(' + newWeapon + ', 1, 1)">' + perkValueOptionString + '</select><div class="delete" onClick="perkRemove(' + newWeapon + ',1,1)"><i class="material-icons md-24">delete</i></div></div><div class="newPerk w' + newWeapon + ' v1" onClick="perkAdd(' + newWeapon + ', 1)"><i class="material-icons md-24">add_circle_outline</i></div></div></div><div class="newVariation w' + newWeapon + '" onClick="variationAdd(' + newWeapon + ')"><i class="material-icons md-24">add_circle_outline</i></div></div><div class="results w' + newWeapon + '"><div class="result w' + newWeapon + ' v1"><header><span>Variation 1</span></header><div class="stats"><div class="statRow"><span class="w' + newWeapon + ' v1 value dmgShot"></span><span class="statName"> Dmg/shot</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value dmgSec"></span><span class="statName"> Dmg/sec</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value dur"></span><span class="statName"> Durability</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value effDmg"></span><span class="statName"> Effective Dmg</span></div></div></div></div>');
+	$("#newWeapon").before('<div class="weapon w' + newWeapon + '"><header><div class="autocomplete weaponPick w' + newWeapon + '"><input id="weapPickW' + newWeapon + '" class="weaponPick w' + newWeapon + '" type="text" autocomplete="off" placeholder="Weapon" onchange="weaponChange(' + newWeapon + ')" /></div><input class="weaponLevel w' + newWeapon + '" type="number" max="50" min="1" step="1" value="1" oninput="validity.valid||(value=\'1\');" /><input type="checkbox" class="weaponCrystal" /><span>Crystal</span><div class="delete" onClick="weaponRemove(' + newWeapon + ')"><i class="material-icons md-24">delete_sweep</i></div></header><div class="variations w' + newWeapon + '"><div class="variation w' + newWeapon + ' v1"><header><span>Variation 1</span><div class="delete" onClick="variationRemove(' + newWeapon + ', 1)"><i class="material-icons md-24">delete_forever</i></div></header><div class="perks w' + newWeapon + ' v1"><div class="perkRow w' + newWeapon + ' v1 p1"><select class="perkType w' + newWeapon + ' v1 p1" onChange="perkTypeChange(' + newWeapon + ', 1, 1)">' + perkTypeOptionString + '</select><select class="perkValue w' + newWeapon + ' v1 p1" onChange="perkValueChange(' + newWeapon + ', 1, 1)">' + perkValueOptionString + '</select><div class="delete" onClick="perkRemove(' + newWeapon + ',1,1)"><i class="material-icons md-24">delete</i></div></div><div class="newPerk w' + newWeapon + ' v1" onClick="perkAdd(' + newWeapon + ', 1)"><i class="material-icons md-24">add_circle_outline</i></div></div></div><div class="newVariation w' + newWeapon + '" onClick="variationAdd(' + newWeapon + ')"><i class="material-icons md-24">add_circle_outline</i></div></div><div class="results w' + newWeapon + '"><div class="result w' + newWeapon + ' v1"><header><span>Variation 1</span></header><div class="stats"><div class="statRow"><span class="w' + newWeapon + ' v1 value dmgShot"></span><span class="statName"> Dmg/shot</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value dmgSec"></span><span class="statName"> Dmg/sec</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value dur"></span><span class="statName"> Durability</span></div><div class="statRow"><span class="w' + newWeapon + ' v1 value effDmg"></span><span class="statName"> Effective Dmg</span></div></div></div></div>');
+	
+	autocomplete(document.getElementById('weapPickW' + newWeapon), weaponList);
 	
 	if (weaponNumber != undefined && weaponName != undefined) {
 		$('.weaponPick.w' + weaponNumber).val(weaponName);
@@ -378,7 +380,7 @@ function variationAdd(weapon) {
      
      $('.newVariation.w' + weapon).before('<div class="variation w' + weapon + ' v' + newVariation + '"><header><span>Variation ' + newVariation + '</span><div class="delete" onclick="variationRemove(' + weapon + ', ' + newVariation + ')"><i class="material-icons md-24">delete_forever</i></div></header><div class="perks w' + weapon + ' v' + newVariation + '"><div class="perkRow w' + weapon + ' v' + newVariation + ' p1"><select class="perkType w' + weapon + ' v' + newVariation + ' p1" onchange="perkTypeChange(' + weapon + ', ' + newVariation + ', 1)">' + perkTypeOptionString + '</select><select class="perkValue w' + weapon + ' v' + newVariation + ' p1" onchange="perkValueChange(' + weapon + ', ' + newVariation + ', 1)">' + perkValueOptionString + '</select><div class="delete" onClick="perkRemove(' + weapon + ',' + newVariation + ',1)"><i class="material-icons md-24">delete</i></div></div><div class="newPerk w' + weapon + ' v' + newVariation + '" onclick="perkAdd(' + weapon + ', ' + newVariation + ')"><i class="material-icons md-24">add_circle_outline</i></div></div></div>');
      $('.results.w' + weapon).append('<div class="result w' + weapon + ' v' + newVariation + '"><header><span>Variation ' + newVariation + '</span></header><div class="stats"><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value dmgShot"></span><span class="statName"> Dmg/shot</span></div><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value dmgSec"></span><span class="statName"> Dmg/sec</span></div><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value dur"></span><span class="statName"> Durability</span></div><div class="statRow"><span class="w' + weapon + ' v' + newVariation + ' value effDmg"></span><span class=""> Effective Dmg</span></div></div></div>');
-     
+	
      updateParameter('w' + weapon + 'v' + newVariation + 'p1', $('.perkType.w' + weapon + '.v' + newVariation + '.p1').val() + '.' + $('.perkValue.w' + weapon + '.v' + newVariation + '.p1').val());
 }
 function variationRemove(weapon, variation) {
@@ -427,4 +429,101 @@ function perkRemove(weapon, variation, perk) {
 
 function recalculate() {
 	
+}
+
+function autocomplete(inp, arr) {
+	// the autocomplete function takes two arguments, the text field element and an array of possible autocompleted values:
+	var currentFocus;
+	// execute a function when someone writes in the text field:
+	inp.addEventListener("input", function(e) {
+		var a, b, i, val = this.value;
+		// close any already open lists of autocompleted values
+		closeAllLists();
+		if (!val)
+			return false;
+		currentFocus = -1;
+		// create a DIV element that will contain the items (values):
+		a = document.createElement("DIV");
+		a.setAttribute("id", this.id + "autocomplete-list");
+		a.setAttribute("class", "autocomplete-items");
+		// append the DIV element as a child of the autocomplete container:
+		this.parentNode.appendChild(a);
+		// for each item in the array...
+		for (i = 0; i < arr.length; i++) {
+			/*check if the item starts with the same letters as the text field value:*/
+			if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+				/*create a DIV element for each matching element:*/
+				b = document.createElement("DIV");
+				/*make the matching letters bold:*/
+				b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+				b.innerHTML += arr[i].substr(val.length);
+				/*insert a input field that will hold the current array item's value:*/
+				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+				/*execute a function when someone clicks on the item value (DIV element):*/
+				b.addEventListener("click", function(e) {
+					/*insert the value for the autocomplete text field:*/
+					inp.value = this.getElementsByTagName("input")[0].value;
+					/*close the list of autocompleted values,
+					(or any other open lists of autocompleted values:*/
+					closeAllLists();
+				});
+				a.appendChild(b);
+			}
+		}
+	});
+	/*execute a function presses a key on the keyboard:*/
+	inp.addEventListener("keydown", function(e) {
+		var x = document.getElementById(this.id + "autocomplete-list");
+		if (x) x = x.getElementsByTagName("div");
+		if (e.keyCode == 40) {
+			/*If the arrow DOWN key is pressed,
+			increase the currentFocus variable:*/
+			currentFocus++;
+			/*and and make the current item more visible:*/
+			addActive(x);
+		} else if (e.keyCode == 38) { //up
+			/*If the arrow UP key is pressed,
+			decrease the currentFocus variable:*/
+			currentFocus--;
+			/*and and make the current item more visible:*/
+			addActive(x);
+		} else if (e.keyCode == 13) {
+			/*If the ENTER key is pressed, prevent the form from being submitted,*/
+			e.preventDefault();
+			if (currentFocus > -1) {
+				/*and simulate a click on the "active" item:*/
+				if (x) x[currentFocus].click();
+			}
+		}
+	});
+	function addActive(x) {
+		/*a function to classify an item as "active":*/
+		if (!x) return false;
+		/*start by removing the "active" class on all items:*/
+		removeActive(x);
+		if (currentFocus >= x.length) currentFocus = 0;
+		if (currentFocus < 0) currentFocus = (x.length - 1);
+		/*add class "autocomplete-active":*/
+		x[currentFocus].classList.add("autocomplete-active");
+	}
+	function removeActive(x) {
+		/*a function to remove the "active" class from all autocomplete items:*/
+		for (var i = 0; i < x.length; i++) {
+			x[i].classList.remove("autocomplete-active");
+		}
+	}
+	function closeAllLists(elmnt) {
+		/*close all autocomplete lists in the document,
+		except the one passed as an argument:*/
+		var x = document.getElementsByClassName("autocomplete-items");
+		for (var i = 0; i < x.length; i++) {
+			if (elmnt != x[i] && elmnt != inp) {
+				x[i].parentNode.removeChild(x[i]);
+			}
+		}
+	}
+	/*execute a function when someone clicks in the document:*/
+	document.addEventListener("click", function (e) {
+		closeAllLists(e.target);
+	});
 }
