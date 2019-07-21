@@ -5,7 +5,7 @@ This is an online calculator written in pure JavaScript based on [Whitesushi's F
 So I wanted to make a web page where you could just use the calculator and it would automatically update when he updates his spreadsheet and you can even bookmark a filled out calculator even.
 
 ## Calculators
-- [ ] [Pure DPS](https://victhebeast.github.io/Fortnite-STW-Calculator/pureDps.html)
+- [ ] [Pure DPS](https://demosjarco.github.io/Fortnite-STW-Calculator/pureDps.html)
 - [ ] Armor Calculator
 - [ ] Evolution Requirements
 - [ ] Crafting Materials Calculator
